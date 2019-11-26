@@ -1,0 +1,16 @@
+*{
+    font-family: sans-serif;
+    background-color: #F0F3F4;
+    text-align: center;
+}
+main article{
+    margin-top: 20%;
+}
+.form-footer{
+    display: inline;
+}
+main article h1{
+}
+main article input[submit]{
+    width: 100%;
+}
