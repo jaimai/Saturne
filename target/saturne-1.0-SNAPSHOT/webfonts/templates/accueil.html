@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Saturne</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,7 +20,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Admin</a>
+                    <a class="nav-link" href="admin">Admin</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">BDE/BDS</a>
@@ -29,7 +29,7 @@
                     <a class="nav-link" href="#">Associations</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="deconnexion">Deconnexion</a>
+                    <a class="nav-link" href="../deconnexion">Deconnexion</a>
                 </li>
             </ul>
         </div>
@@ -37,17 +37,17 @@
 </header>
 <main>
     <nav class="navbar navbar-light bg-light">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Nom de la video" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+        <form class="form-inline" action="accueil" method="post">
+            <input class="form-control mr-sm-2" type="search" name="nomVideo" placeholder="Nom de la video" aria-label="Search">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="Rechercher">
         </form>
     </nav>
-    <div class="video">
+    <div align="center" class="video" th:each="video : ${laVideo}">
         <h1>RAID HEI 2019</h1>
-        <embed src="https://www.youtube.com/embed/Og6cOcc9AIo" allowfullscreen="true" width="1000"
-               height="600">
+        <embed th:src="@{${'https://www.youtube.com/embed/'+video.url}}" allowfullscreen="true" width="1000" height="500">
+        <br>
+        <button class="btn btn-primary">Suivant</button>
     </div>
-    <button class="btn btn-primary">Suivant</button>
 </main>
 
 </body>

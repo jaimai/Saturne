@@ -4,6 +4,8 @@ import dao.UserDao;
 import dao.impl.UserDaoImpl;
 import entities.User;
 
+import java.util.ArrayList;
+
 public class UserService {
     private static class UserServiceHolder {
         private static UserService instance = new UserService();
@@ -21,4 +23,6 @@ public class UserService {
     public  void addUser(User user){
         userDao.addUSer(user);
     }
+    public User getUser(String email) {return userDao.getUser(email);}
+    public ArrayList<User> lesUsers() {return userDao.ListUsers();}
 }
