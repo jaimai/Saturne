@@ -25,4 +25,15 @@ public class UserService {
     }
     public User getUser(String email) {return userDao.getUser(email);}
     public ArrayList<User> lesUsers() {return userDao.ListUsers();}
+    public void deleteUser(String email){userDao.deleteUser(email);}
+    public void updateLevel(String email,int level)
+    {
+        if(level == 0){
+            userDao.updateLevel(email,1);
+        }
+        else{
+            userDao.updateLevel(email,0);
+        }
+
+    }
 }

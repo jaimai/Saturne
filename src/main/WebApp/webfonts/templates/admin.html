@@ -53,12 +53,19 @@
             <tbody th:each="user : ${lesUsers}">
             <tr>
                 <th scope="row">1</th>
-                <td th:text="${user.email}"></td>
+                <td th:text="${user.email}"></td>`
                 <td th:text="${user.level}"></td>
                 <td>
-                    <button class="btn btn-success">
-                        modifier
-                    </button>
+                    <form method="post" action="modifLevel">
+                        <input type="submit" class="btn btn-success" value="modifier">
+                        <input type="text" name="email" th:value="${user.email}" hidden="true">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="deleteUser">
+                        <input type="submit" class="btn btn-danger" value="supprimer">
+                        <input type="text" name="email" th:value="${user.email}" hidden="true">
+                    </form>
                 </td>
             </tr>
             </tbody>
@@ -80,13 +87,12 @@
             <tbody th:each="video : ${lesVideos}">
             <tr>
                 <th scope="row">1</th>
-                <td th:text="${video.nom}"></td>
+                <td th:text="${video.nom}">
+                </td>
                 <td th:text="${video.dateVideo}"></td>
                 <td th:text="${video.url}"></td>
                 <td>
-                    <button class="btn btn-success">
-                        modifier
-                    </button>
+                    <input type="submit" class="btn btn-success" value="modifier">
                 </td>
             </tr>
             </tbody>

@@ -93,4 +93,31 @@ public class UserDaoImpl implements UserDao {
         }
         return lesUsers;
     }
+
+    @Override
+    public void deleteUser(String email) {
+        try(Connection connection = getDataSource().getConnection()){
+            String req = "DELETE FROM user WHERE email = ? ";
+            try(PreparedStatement preparedStatement = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setString(1,email);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateLevel(String email, int level) {
+        try(Connection connection = getDataSource().getConnection()){
+            String req = "UPDATE users set level = ? WHERE email = ? ";
+            try(PreparedStatement preparedStatement = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS)) {
+                preparedStatement.setInt(1,level);
+                preparedStatement.setString(2,email);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
