@@ -1,6 +1,8 @@
 package servlets;
 
+import dao.CategorieDao;
 import entities.Video;
+import services.CategorieService;
 import services.VideoService;
 
 import javax.servlet.ServletException;
@@ -17,9 +19,11 @@ public class AjoutVideoServlet extends HttpServlet {
         String nom = request.getParameter("txtNom");
         String dateVideo = request.getParameter("dateVideo");
         String id = request.getParameter("txtId");
+        String visible = request.getParameter("selectVisible");
+        String categorie = request.getParameter("selectCategorie");
         Date dv = Date.valueOf(dateVideo);
-        Video video = new Video(nom,dv,id);
-        System.out.println(video.toString());
+        int idCategorie = CategorieService.getInstance().idCategorie(categorie);
+        Video video = new Video(nom,dv,id,visible,idCategorie);
         VideoService.getInstance().ajoutVideo(video);
         response.sendRedirect("admin");
 

@@ -8,6 +8,7 @@ import entities.User;
 import entities.Video;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VideoService {
 
@@ -33,6 +34,21 @@ public class VideoService {
     }
     public ArrayList<Video> lesVideos() {
         return videoDao.listVideo();
+    }
+    public List<Video> lesVideoBde(){
+        return videoDao.listVideoBde();
+    }
+    public List<Video> lesVideoBds(){
+        return videoDao.listVideoBds();
+    }
+    public void updateVisible(String nom,String visible){
+        if(visible.equals("0")){
+            videoDao.updateVisible(nom,"1");
+        }
+        else{
+            videoDao.updateVisible(nom,"0");
+
+        }
     }
 }
 

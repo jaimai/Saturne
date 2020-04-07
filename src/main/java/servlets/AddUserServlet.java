@@ -23,7 +23,7 @@ public class AddUserServlet extends GenericServlet {
         String email = request.getParameter("email");
         String mdp= request.getParameter("mdp");
         mdp = MotDePasseUtil.genererMotDePasse(mdp);
-        User user = new User(email,mdp);
+        User user = new User(email,mdp,0);
         boolean error = false;
 
         if(email.contains("@") &&  email.contains("yncrea") && !mdp.isEmpty()){

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Saturne</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<main>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="accueil">
+                            <img width="100px" src="../../Img/logoSaturne.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="videobdes">ALL</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="videoBds">BDS</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div th:each="video : ${lesVideo}"  style="text-align: center">
+        <h4 th:text="${video.nom}"></h4>
+        <embed th:src="@{${'https://www.youtube.com/embed/'+video.url}}" allowfullscreen="true" width="560" height="315">
+    </div>
+</main>
+</body>
+</html>

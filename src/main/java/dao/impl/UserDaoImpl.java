@@ -15,10 +15,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUSer(User user) {
         try (Connection connection = getDataSource().getConnection()) {
-            String req = "INSERT INTO users(email,mdp) VALUES(?,?)";
+            String req = "INSERT INTO users(email,mdp,level) VALUES(?,?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, user.getEmail());
                 preparedStatement.setString(2, user.getMdp());
+                preparedStatement.setInt(3, user.getLevel());
+
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException e) {

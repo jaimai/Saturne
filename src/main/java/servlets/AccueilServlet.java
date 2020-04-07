@@ -1,8 +1,10 @@
 package servlets;
 
+import entities.User;
 import entities.Video;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
+import services.UserService;
 import services.VideoService;
 
 import javax.servlet.ServletException;
@@ -30,6 +32,9 @@ public class AccueilServlet extends GenericServlet{
         else {
             video =  VideoService.getInstance().getVideo("raid hei 2019");
         }
+        String emailAuth = request.getSession().getAttribute("email").toString();
+        int level = UserService.getInstance().getUser(emailAuth).getLevel();
+        context.setVariable("level",level);
         context.setVariable("laVideo",video);
         templateEngine.process("accueil", context, response.getWriter());
     }
